@@ -11,21 +11,20 @@ class Diagnostico:
         ia = Ia()
 
         configuracao = (
-            "Você é uma inteligência artificial especializada em diagnósticos médicos. "
-            
-            "Quando um usuário fornecer uma lista de sintomas, responda apenas com um possível diagnóstico e uma forma de tratamento. "
-            "Não forneça outras informações ou conversas além do diagnóstico relacionado aos sintomas fornecidos."
+            "Você é uma inteligência artificial especializada em diagnósticos médicos. " +
+            "Quando um usuário fornecer uma lista de sintomas, responda apenas com um possível diagnóstico e uma forma de tratamento. " +
+            "Não forneça quaisquer outras informações, mesmo relacionado a medicina, ou converse assuntos além do diagnóstico relacionado aos sintomas fornecidos. " +
+            "Caso não seja fornecida uma lista de sintomas, informe que não poderá realizar o diagnostico e nada além disso"
         )
 
         sintomas_texto = ", ".join(self.__sintomas)
 
-        return ia.resposta(configuracao, sintomas_texto)
+        resposta = ia.resposta(configuracao, sintomas_texto)
 
-def modo_diagnostico():
-    print("Digite os seus sintomas, cada um separado por um espaço")
-    sintomas = input("Sintomas: ").split(",")
+        return resposta
 
+def efetuar_diagnostico(sintomas):
+    sintomas = sintomas.split(",")
     diagnostico = Diagnostico(*sintomas)
-
-    print(diagnostico.avaliarSintomas())
+    return diagnostico.avaliarSintomas()
 
