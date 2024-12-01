@@ -2,7 +2,23 @@
 import telebot
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
+from src.ia import Ia
+
 TELEGRAM_TOKEN = '7746958558:AAEJLybNX4Okj6tkkRpPlepwKxn5tZ7wHgk'
+
+configuracao = "Você é um assistente que só responde perguntas a medicina, qualquer o tipo de pergunta não deve responder."
+
+ia = Ia()
+
+chat_chain = ia.iniciar_chat_constante(configuracao)
+
+while True:
+    pergunta = input("Você: ")
+    if pergunta.lower() == "sair":
+        print("Chat encerrado.")
+        break
+    resposta = chat_chain.predict(human_input=pergunta)
+    print(resposta)
 
 bot = telebot.TeleBot(TELEGRAM_TOKEN)
 
