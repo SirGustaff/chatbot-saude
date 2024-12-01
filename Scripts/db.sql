@@ -1,0 +1,11 @@
+CREATE DATABASE IF NOT EXISTS consultas
+
+CREATE TABLE IF NOT EXISTS consulta (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    nome VARCHAR(255) NOT NULL,
+    data DATE NOT NULL,
+    horario TIME NOT NULL,
+    local VARCHAR(255) NOT NULL,
+    especialidade VARCHAR(255) NOT NULL
+)

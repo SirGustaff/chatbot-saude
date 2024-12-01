@@ -1,4 +1,5 @@
 from src.ia import *
+from src.prompts import *
 
 class Diagnostico:
     def __init__(self, *sintomas):
@@ -10,12 +11,7 @@ class Diagnostico:
     def avaliarSintomas(self):
         ia = Ia()
 
-        configuracao = (
-            "Você é uma inteligência artificial especializada em diagnósticos médicos. " +
-            "Quando um usuário fornecer uma lista de sintomas, responda apenas com um possível diagnóstico e uma forma de tratamento. " +
-            "Não forneça quaisquer outras informações, mesmo relacionado a medicina, ou converse assuntos além do diagnóstico relacionado aos sintomas fornecidos. " +
-            "Caso não seja fornecida uma lista de sintomas, informe que não poderá realizar o diagnostico e nada além disso"
-        )
+        configuracao = diagnostico_prompt
 
         sintomas_texto = ", ".join(self.__sintomas)
 
